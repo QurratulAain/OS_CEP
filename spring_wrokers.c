@@ -75,10 +75,13 @@ void* picker(void* arg) {
 
     printf("Picker %d is done.\n", id);
     pthread_exit(NULL);
+    return NULL;
 }
 
 // Loader thread function
 void* loader(void* arg) {
+    (void)arg; // Add this line at the top of the function
+
     while (1) {
         pthread_mutex_lock(&crate_mutex);
 
@@ -125,6 +128,7 @@ void* loader(void* arg) {
 
     printf("Loader: All crates delivered. Exiting.\n");
     pthread_exit(NULL);
+    return NULL;
 }
 
 // ------------------ MAIN FUNCTION ------------------
